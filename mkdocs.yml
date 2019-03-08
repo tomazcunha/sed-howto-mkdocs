@@ -1,0 +1,78 @@
+site_name: Sed HOWTO
+nav:
+    - 1. Sobre este documento: index.md
+    - 2. Conhecendo o sed: cap02-Conhecendo_o_sed.md
+# theme: readthedocs
+# theme: windmill
+# theme: cinder
+# theme: alabaster
+theme:
+    name: 'material'
+    palette:
+        primary: 'blue grey'
+        accent: 'indigo'
+    font:
+        # text: 'Roboto'
+        # text: 'Roboto Slab'
+        # text: 'Ubuntu'
+        # text: 'Open Sans'
+        # text: 'Lato'
+        # text: 'Montserrat'
+        # text: 'Source Sans Pro'
+        # text: 'Merriweather'
+        # text: 'PT Serif'
+        # text: 'PT Sans'
+        # text: 'Inconsolata'
+        # text: 'Quicksand'
+        # text: 'Work Sans'
+        # text: 'Crimson Text'
+        # text: 'Oxygen'
+        # text: 'Pacifico'
+        text: 'Rubik'
+        # code: 'Ubuntu Mono'
+        code: 'Inconsolata'
+    language: 'pt'
+    favicon: 'assets/img/favicon.ico'
+    # feature:
+    #     tabs: true
+# extra:
+#     manifest: 'manifest.webmanifest'
+#     social:
+#         - type: 'github'
+#           link: 'https://github.com/squidfunk'
+#         - type: 'twitter'
+#           link: 'https://twitter.com/squidfunk'
+#         - type: 'linkedin'
+#           link: 'https://linkedin.com/in/squidfunk'
+# google_analytics:
+#   - 'UA-XXXXXXXX-X'
+#   - 'auto'
+    # name: readthedocs
+    # name: bootstrap
+    # name: bootstrap4
+    # name: windmill
+    # name: cinder
+    # name: alabaster   # nao está fuincionando, mesmo instalado
+    # name: cluster       # não fuinciona as configurações
+# site_favicon: 'img/favicon.ico' # nao precisa configurar favicon se estiver em docs
+# suppress_nextprev: true
+# suppress_nextprev: false
+extra_css:
+  - 'assets/stylesheets/extra.css'
+markdown_extensions:
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
