@@ -3,8 +3,10 @@
 
 ## 4.1. Descrição de todos os comandos
 
-`prompt$ man sed`
-`prompt$ pinfo sed`
+```
+prompt$ man sed
+prompt$ pinfo sed
+```
 
 Ou num resumo rápido:
 
