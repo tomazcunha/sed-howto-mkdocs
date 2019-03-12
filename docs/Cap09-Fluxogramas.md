@@ -45,4 +45,5 @@
     |_________________|<--- g G ----|__________________|
 
 
+
 Veja explicação sobre estes registradores no tópico [Conhecendo os registradores internos](https://aurelio.net/sed/sed-howto/#registradores-internos).
