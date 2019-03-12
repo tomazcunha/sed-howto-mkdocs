@@ -6,6 +6,7 @@ nav:
     - 4. Os comandos do sed: 'Cap04-Os-comandos-do-sed.md'
     - 5. Conceitos básicos: 'Cap05-Conceitos-básicos.md'
     - 6. Conceitos complementares: 'Cap06-Conceitos-complementares.md'
+    - 7. Tarefas diversas: 'Cap07-Tarefas-diversas.md'
 # theme: readthedocs
 # theme: windmill
 # theme: cinder
@@ -32,7 +33,7 @@ theme:
         # text: 'Crimson Text'
         # text: 'Oxygen'
         # text: 'Pacifico'
-        text: 'Rubik'
+        # text: 'Rubik'
         # code: 'Ubuntu Mono'
         code: 'Inconsolata'
     language: 'pt'
