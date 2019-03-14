@@ -11,12 +11,21 @@ nav:
     - 9. Fluxogramas: 'Cap09-Fluxogramas.md'
     - 10. Nota sobre os adicionais GNU: 'Cap10-Nota-sobre-os-adicionais-GNU.md'
     - 11. Onde obter mais informações: 'Cap11-Onde-obter-mais-informações.md'
-# theme: readthedocs
-# theme: windmill
-# theme: cinder
-# theme: alabaster
 theme:
-    name: 'material'
+    # name: mkdocs
+    # highlightjs: true
+    # hljs_languages:
+    #     - python
+    # # hljs_style: github
+
+    # name: readthedocs
+    # name: windmill
+    # name: cinder
+    # name: alabaster
+    # name: bootstrap
+    # name: bootstrap4
+    # name: gitbook
+    name: material
     palette:
         primary: 'blue grey'
         accent: 'indigo'
@@ -39,7 +48,9 @@ theme:
         # text: 'Pacifico'
         # text: 'Rubik'
         # code: 'Ubuntu Mono'
-        code: 'Inconsolata'
+        # code: 'Inconsolata'
+        # code: 'Open Sans'
+        # code: 'Lato'
     language: 'pt'
     favicon: 'assets/img/favicon.ico'
     # feature:
@@ -66,22 +77,31 @@ theme:
 # site_favicon: 'img/favicon.ico' # nao precisa configurar favicon se estiver em docs
 # suppress_nextprev: true
 # suppress_nextprev: false
-extra_css:
-  - 'assets/stylesheets/extra.css'
-markdown_extensions:
-  - pymdownx.arithmatex
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
+# extra_css:
+#     - 'assets/stylesheets/extra.css'
+
+
+# markdown_extensions:
+#     - pymdownx.arithmatex
+#     - pymdownx.betterem:
+#         smart_enable: all
+#     - pymdownx.caret
+#     - pymdownx.critic
+#     - pymdownx.details
+#     - pymdownx.emoji:
+#         emoji_generator: !!python/name:pymdownx.emoji.to_svg
+#     - pymdownx.inlinehilite
+#     - pymdownx.magiclink
+#     - pymdownx.mark
+#     - pymdownx.smartsymbols
+#     - pymdownx.superfences
+#     - pymdownx.tasklist:
+#         custom_checkbox: true
+#     - pymdownx.tilde
+
+    # - codehilite:
+    #     linenums: true
+
+    # - fenced_code
+    # - toc:
+    #     permalink: True
