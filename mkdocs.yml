@@ -12,11 +12,11 @@ nav:
     - 10. Nota sobre os adicionais GNU: 'Cap10-Nota-sobre-os-adicionais-GNU.md'
     - 11. Onde obter mais informações: 'Cap11-Onde-obter-mais-informações.md'
 theme:
-    # name: mkdocs
-    # highlightjs: true
-    # hljs_languages:
-    #     - python
-    # # hljs_style: github
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
 
     # name: readthedocs
     # name: windmill
@@ -25,14 +25,23 @@ theme:
     # name: bootstrap
     # name: bootstrap4
     # name: gitbook
-    name: material
-    palette:
-        primary: 'blue grey'
-        accent: 'indigo'
+    # name: material
+
+    # name: mkdocs
+    # highlightjs: true
+    # hljs_languages:
+    #     - python
+    # # hljs_style: github
+
+    # palette:
+    #     primary: 'blue grey'
+    #     accent: 'indigo'
+
     font:
-        # text: 'Roboto'
+        text: 'Roboto'
         # text: 'Roboto Slab'
         # text: 'Ubuntu'
+        # text: 'Ubuntu Mono'
         # text: 'Open Sans'
         # text: 'Lato'
         # text: 'Montserrat'
@@ -47,12 +56,16 @@ theme:
         # text: 'Oxygen'
         # text: 'Pacifico'
         # text: 'Rubik'
+
+        code: 'Inconsolata'
+        # code: 'Roboto Slab'
+        # code: 'Roboto'
         # code: 'Ubuntu Mono'
-        # code: 'Inconsolata'
         # code: 'Open Sans'
         # code: 'Lato'
+
     language: 'pt'
-    favicon: 'assets/img/favicon.ico'
+    favicon: assets/img/favicon.ico
     # feature:
     #     tabs: true
 # extra:
@@ -64,6 +77,13 @@ theme:
 #           link: 'https://twitter.com/squidfunk'
 #         - type: 'linkedin'
 #           link: 'https://linkedin.com/in/squidfunk'
+
+extra_css:
+    - assets/stylesheets/extra.css
+
+# extra_javascript:
+#   - 'javascripts/extra.js'
+
 # google_analytics:
 #   - 'UA-XXXXXXXX-X'
 #   - 'auto'
@@ -77,8 +97,7 @@ theme:
 # site_favicon: 'img/favicon.ico' # nao precisa configurar favicon se estiver em docs
 # suppress_nextprev: true
 # suppress_nextprev: false
-# extra_css:
-#     - 'assets/stylesheets/extra.css'
+
 
 
 # markdown_extensions:
