@@ -10,7 +10,7 @@ Normalmente o _Sed_ sempre imprime na **saída padrão** todas as linhas do arqu
 
 Veja o primeiro exemplo citado:
 
-```
+```shell
 prompt$ sed 'p' texto.txt
 ```
 
@@ -22,13 +22,13 @@ Temos como modificar este comportamento com a opção **`-n`**, que significa "n
 
 Assim sendo, colocando o **`-n`**, eliminamos o comportamento padrão de "imprimir sempre na saída":
 
-```
+```shell
 prompt$ sed -n 'p' texto.txt
 ```
 
 Que resulta no conteúdo do arquivo, pois cada linha é impressa apenas uma vez, devido ao comando **`p`**. Assim fica fácil entender como funciona o exemplo já citado que imprime apenas a **linha 5** de um arquivo:
 
-```
+```shell
 prompt$ sed -n 5p texto.txt
 ```
 
@@ -44,19 +44,19 @@ Caso o endereço não seja informado, o comando _Sed_ será aplicado para **toda
 
 Por exemplo, referenciando a linha pelo seu número, como já foi visto anteriormente:
 
-```
+```shell
 prompt$ sed '5d' texto.txt
 ```
 
 Mas também poderia ser uma linha que tivesse uma palavra qualquer:
 
-```
+```shell
 prompt$ sed '/estorvo/d' texto.txt
 ```
 
 O comando **`d`** apaga linhas segundo o endereço, então este comando apagará todas as linhas que tiverem a palavra `estorvo`. Este exemplo tem o funcionamento idêntico ao comando:
 
-```
+```shell
 prompt$ grep -v estorvo texto.txt
 ```
 
@@ -64,14 +64,14 @@ prompt$ grep -v estorvo texto.txt
 
 Como endereço, ainda se pode especificar um **intervalo**, como da linha 5 até a linha 10, ou da linha 5 até a linha que tiver a palavra `estorvo`:
 
-```
+```shell
 prompt$ sed '5,10d' texto.txt
 prompt$ sed '5,/estorvo/d' texto.txt
 ```
 
 No endereço, temos um caractere especial, o **`$`** que referencia à **última** linha do texto. Assim sendo, para apagar da **linha 10** até o **final** do texto, o comando é:
 
-```
+```shell
 prompt$ sed '10,$d' texto.txt
 ```
 
@@ -79,7 +79,7 @@ prompt$ sed '10,$d' texto.txt
 
 No _Sed_ da GNU, a partir da versão **3.02a**(*), foi adicionada uma maneira nova de especificar um endereço:
 
-```
+```shell
 prompt$ sed '/estorvo/,+3d' texto.txt
 ```
 
@@ -87,7 +87,7 @@ Que referencia a linha que contém a palavra estorvo e mais as **3** linhas segu
 
 E pra finalizar, como já dito anteriormente, quando o comando **não** tem endereço, é aplicado para todas as linhas:
 
-```
+```shell
 prompt$ sed 'd' texto.txt
 ```
 
@@ -99,11 +99,15 @@ A qualquer hora você pode **abortar** o comando _Sed_ com o comando **`q`**.
 
 Isso é útil no nosso exemplo anterior de emular o comando _head_, imprimindo apenas as 10 primeiras linhas do arquivo:
 
-    sed '10q'         ao chegar na linha 10, pare.
+```bash
+sed '10q'         # ao chegar na linha 10, pare.
+```
 
 Ou ainda, para obter apenas os cabeçalhos de uma mensagem de e-mail, que são separados do corpo da mensagem por uma linha em branco:
 
-    sed '/^$/q'       pare na primeira linha em branco que achar
+```bash
+sed '/^$/q'       # pare na primeira linha em branco que achar
+```
 
 ## 5.4. Invertendo a lógica
 
@@ -111,13 +115,17 @@ No _Sed_ temos o modificador **`!`** que inverte a lógica do comando, ou seja `
 
 Temos o comando _head_ que imprime as 10 primeiras linhas de um arquivo. Com as dicas já vistas, podemos fazer esta tarefa com o _Sed_ assim:
 
-    sed -n '1,10p'    imprima apenas da linha 1 até a 10
-    sed '11,$d'       apague da linha 11 até o final
+```bash
+sed -n '1,10p'    # imprima apenas da linha 1 até a 10
+sed '11,$d'       # apague da linha 11 até o final
+```
 
 Ou ainda, podemos inverter a lógica e fazer:
 
-    sed '1,10!d'      NÃO apague da linha 1 até a 10 (ou seja, apague as outras)
-    sed -n '11,$!p'   NÃO imprima da linha 11 até o final (ou seja, imprima as outras)
+```bash
+sed '1,10!d'      # NÃO apague da linha 1 até a 10 (ou seja, apague as outras)
+sed -n '11,$!p'   # NÃO imprima da linha 11 até o final (ou seja, imprima as outras)
+```
 
 A dica é sempre complementar a leitura mental com o inverso (entre parênteses nos exemplos), ou seja, se o _Sed_ NÃO vai aplicar um comando em determinadas linhas, isso quer dizer implicitamente que este comando **será aplicado** em todas as outras linhas. É estranho, mas acostuma :)
 
@@ -127,7 +135,7 @@ A dica é sempre complementar a leitura mental com o inverso (entre parênteses 
 
 É possível aplicar vários comandos _Sed_, em **seqüência**. Basta separá-los por ponto-e-vírgula.
 
-```
+```shell
 prompt$ sed '5d;10d;/estorvo/d' texto.txt
 ```
 
@@ -139,7 +147,7 @@ Os comandos que recebem parâmetros **`(r, w, i, a, c)`**, não aceitam o ponto-
 
 Estes comandos devem ser separados dos restantes, sendo passados como comandos isolados, pela opção de linha de comando **`-e`**:
 
-```
+```shell
 prompt$ sed -e '1i começo de tudo' -e '5d' texto.txt
 ```
 

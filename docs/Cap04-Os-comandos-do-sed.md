@@ -3,7 +3,7 @@
 
 ## 4.1. Descrição de todos os comandos
 
-```
+```shell
 prompt$ man sed
 prompt$ pinfo sed
 ```

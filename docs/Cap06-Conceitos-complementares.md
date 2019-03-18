@@ -8,13 +8,13 @@ Com o _Sed_ sendo invocado na linha de comando, deve-se ter alguns cuidados para
 
 Para evitar isso coloque os comandos _Sed_ **sempre** entre aspas simples:
 
-```
+```shell
 prompt$ sed 's/isso/aquilo/' texto.txt
 ```
 
 Salvo quando no meio do comando _Sed_, existir algo que deva ser interpretado, como uma variável por exemplo. Neste caso coloque os comandos entre aspas duplas:
 
-```
+```shell
 prompt$ sed "s/$HOME/aquilo/" texto.txt
 ```
 
@@ -28,13 +28,13 @@ Ou ainda, para evitar completamente a interpretação do shell, sem se preocupar
 
 Sendo a barra o delimitador do comando **`s`** as outras barras comuns devem ser escapadas com a barra invertida **`\`**, para não serem confundidas com os delimitadores normais, ficando o monstro a seguir:
 
-```
+```shell
 prompt$ sed 's/\/usr\/local\/bin/\/usr\/bin/' texto.txt
 ```
 
 Para evitar ter que ficar se escapando todas estas barras, basta lembrar que o comando **`s`** aceita **qualquer** delimitador, sendo a barra apenas um padrão de referências históricas. Então, neste caso, poderíamos escolher outro delimitador como por exemplo a vírgula:
 
-```
+```shell
 prompt$ sed 's,/usr/local/bin,/usr/bin,' texto.txt
 ```
 
@@ -44,13 +44,13 @@ Evitando-se de ter que ficar escapando as barras. A mesma dica vale para o coman
 
 E se precisássemos apagar as linhas que contém o **`/usr/local/bin`**? Teríamos que colocar o nome do diretório no endereço do comando **`d`**, voltando com a festa dos escapes:
 
-```
+```shell
 prompt$ sed '/\/usr\/local\/bin/d' texto.txt
 ```
 
 Para usarmos outro delimitador no endereço, basta escaparmos o primeiro, que no caso abaixo é a vírgula:
 
-```
+```shell
 prompt$ sed '\,/usr/local/bin,d' texto.txt
 ```
 
@@ -78,13 +78,13 @@ No _Sed_ da GNU, a partir da versão **3.02.80**(*), vários escapes novos foram
 
 O procedimento comum quando se quer gravar num arquivo o resultado de um comando _Sed_, é o redirecionamento:
 
-```
+```shell
 prompt$ sed 'comando' texto.txt > texto-alterado.txt
 ```
 
 Mas é muito comum, ao alterarmos um arquivo, queremos gravar estas alterações no **próprio** arquivo original. A tentativa intuitiva seria:
 
-```
+```shell
 prompt$ sed 'comando' texto.txt > texto.txt
 ```
 
@@ -96,7 +96,7 @@ Isso acontece porque ao fazer o redirecionamento **`>`**, o `shell` abre imediat
 
 Para evitar isso, voltamos a primeira tática de gravar o resultado num outro arquivo, e depois o mais natural é **mover** o arquivo novo sobre o original:
 
-```
+```shell
 prompt$ sed 'comando' texto.txt > texto-alterado.txt
 prompt$ mv texto-alterado.txt texto.txt
 ```
@@ -107,7 +107,7 @@ Para a grande maioria dos casos, isso é suficiente, mas convém aqui lembrar qu
 
 Para evitar isso, a abordagem mais ortodoxa e segura seria aplicar o comando _Sed_ numa cópia e gravar o resultado no arquivo original via redirecionamento:
 
-```
+```shell
 prompt$ cp -a texto.txt texto-tmp.txt
 prompt$ sed 'comando' texto-tmp.txt > texto.txt
 prompt$ rm texto-tmp.txt

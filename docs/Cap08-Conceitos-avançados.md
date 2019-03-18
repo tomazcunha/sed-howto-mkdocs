@@ -8,7 +8,7 @@ No _Sed_ da GNU, a partir da versão **3.02.80**(*), foi adicionada a opção **
 
 Um exemplo prático seria mostrar apenas as mensagens do sistema relativas às conexões _ssh_:
 
-```
+```shell
 prompt$ tail -f /var/log/messages | sed -nu '/sshd/p'
 ```
 
@@ -22,7 +22,7 @@ Como os comandos _Sed_ vão ficando extensos e complicados, é conveniente coloc
 
 Você pode espalhar os comandos por várias linhas, trocando o **`;`** por quebras de linha e colocar comentários precedidos de **`#`**. O exemplo de apagar linhas ficaria:
 
-```
+```shell
 # programa.sed: apaga algumas linhas
 
 # apaga a 5ª linha
@@ -37,7 +37,7 @@ Você pode espalhar os comandos por várias linhas, trocando o **`;`** por quebr
 
 Para dizer ao _Sed_ para utilizar aquele arquivo como fonte de comandos, basta usar a opção **`-f`**
 
-```
+```shell
 prompt$ sed -f programa.sed texto.txt
 ```
 
@@ -47,25 +47,25 @@ O interpretador de comandos mais utilizado (bash) sempre procura na **primeira**
 
 Se um arquivo é um programinha em _shell_, basta colocar
 
-```
+```shell
 #!/bin/sh
 ```
 
 Na primeira linha para que o _bash_ saiba que deve executá-lo com o comando **`/bin/sh`**. O mesmo funciona para qualquer outro interpretador, como o _Sed_. então para tornar um arquivos de comandos _Sed_ executável basta colocar como primeira linha:
 
-```
+```shell
 #!/bin/sed -f
 ```
 
 E é claro, torná-lo executável:
 
-```
+```shell
 prompt$ chmod +x programa.sed
 ```
 
 E na linha de comando, chame-o normalmente:
 
-```
+```shell
 prompt$ ./programa.sed texto.txt
 prompt$ cat texto.txt | ./programa.sed
 ```
@@ -96,7 +96,7 @@ O _anexando_ acima significa "não sobrescreve o conteúdo original", ou seja, e
 
 Um exemplo didático de uso do _espaço reserva_ é ir guardando nele algumas linhas do texto e mostrá-las depois no final do arquivo:
 
-```
+```shell
 prompt$ sed '/root/H;$g' /etc/passwd
 ```
 
@@ -108,15 +108,17 @@ Como os registradores são a parte mais **obscura** do _Sed_ (mais por falta de 
 
 Temos os dois registradores vazios: (que daqui pra frente serão chamados apenas de _padrão e reserva_)
 
+```
      __________________                __________________
     |                  |              |                  |
     |                  |              |                  |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 E um arquivo hipotético com o conteúdo: (não são odiosos estes exemplos com frutas?)
 
-```
+```bash
 laranja
 uva
 abacaxi
@@ -126,13 +128,13 @@ mimosa
 
 E aplicaremos o comando:
 
-```
+```bash
 sed '/laranja/h ; /uva/g ; /abacaxi/H ; /melancia/G ; /mimosa/x'
 ```
 
 Obtendo como resultado:
 
-```
+```bash
 laranja
 laranja
 abacaxi
@@ -145,89 +147,109 @@ abacaxi
 
 Vejamos o que aconteceu. Lida a primeira linha **`laranja`**, ela é imediatamente colocada no _padrão_ para ser manipulada:
 
+```
      __________________                __________________
     |                  |              |                  |
     |      laranja     |              |                  |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 O comando direcionado a ela é o **`h`**, que guarda uma cópia dela no _reserva_:
 
+```
      __________________                __________________
     |                  |              |                  |
     |      laranja     |   -- h -->   |      laranja     |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 Como mais nenhum comando é relativo à linha **`laranja`**, o _Sed_ dá por encerrado o processamento dessa linha e imprime o conteúdo do _padrão_ na saída: "laranja".
 
 Beleza, agora ele vai processar a segunda linha, novamente a primeira coisa é colocá-la no _padrão_, sobrescrevendo o que tinha antes:
 
+```
      __________________                __________________
     |                  |              |                  |
     |        uva       |              |      laranja     |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 O _reserva_, enquanto nenhum outro comando escrever nele, permanecerá o mesmo. O comando direcionado à linha **`uva`** é o **`g`**, que pega o conteúdo do _reserva_ e o coloca no _padrão_, apagando o que estiver nele (neste caso: _uva_):
 
+```
      __________________                __________________
     |                  |              |                  |
     |      laranja     |   <-- g --   |      laranja     |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 Novamente, não há mais comandos a ser executados, então imprime na saída o conteúdo do _padrão_: "laranja".
 
 Indo para a terceira linha e colocando-a no _padrão_:
 
+```
      __________________                __________________
     |                  |              |                  |
     |      abacaxi     |              |      laranja     |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 O comando dessa linha é o **`H`**, que tal como o **`h`**, guarda o conteúdo do _padrão_ no _reserva_, com diferença que ele preserva o conteúdo já existente dele, separando com um **`\n`**:
 
+```
      __________________                __________________
     |                  |              |                  |
     |      abacaxi     |   -- H -->   | laranja\nabacaxi |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 Novamente, chegou ao fim, imprime o _padrão_: "abacaxi". a próxima linha é a da **`melancia`**:
 
+```
      __________________                __________________
     |                  |              |                  |
     |     melancia     |              | laranja\nabacaxi |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 E agora vai ficar divertido, aplicando o comando **`G`**, que pega o conteúdo do _reserva_ e anexa ao _padrão_:
 
+```
      ____________________________           __________________
     |                            |         |                  |
     | melancia\nlaranja\nabacaxi |  <-G--  | laranja\nabacaxi |
     |____________________________|         |__________________|
              espaço padrão                    espaço reserva
+```
 
 E a saída agora fica "melancia\nlaranja\nabacaxi", com o detalhe que o _Sed_ troca estes **`\n`** por quebras de linha na impressão. Então são 3 linhas na saída. Vá acompanhando com o resultado que já foi cantado antecipadamente lá em cima.
 
 E finalmente, a última linha:
 
+```
      __________________                __________________
     |                  |              |                  |
     |      mimosa      |              | laranja\nabacaxi |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 E para ela, o comando que troca o conteúdo dos 2 registradores, o **`x`**:
 
+```
      __________________                __________________
     |                  |              |                  |
     | laranja\nabacaxi |  <-- x --->  |      mimosa      |
     |__________________|              |__________________|
        espaço padrão                     espaço reserva
+```
 
 E mostra na saída o _padrão_, com duas linhas: "laranja" e "abacaxi".
 

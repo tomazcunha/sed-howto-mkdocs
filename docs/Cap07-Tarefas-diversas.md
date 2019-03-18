@@ -4,20 +4,20 @@
 
 No _Sed_ da GNU, a partir da versão **3.02.80**(*), foi adicionado o **`\n`** como escape válido dos dois lados do comando **`s///`**. Com isso a tarefa de colocar cada palavra numa linha isolada, ou seja, trocar espaços em branco por quebras de linha, fica trivial:
 
-```
+```shell
 prompt$ sed 's/ /\n/g' texto.txt
 ```
 
 Mas com outras versões do _Sed_ que não entendem este escape, a quebra de linha deve ser inserida **literalmente** e deve ser escapada:
 
-```
+```shell
 prompt$ sed 's/ /\
 prompt$ /g' texto.txt
 ```
 
 Como curiosidade, a operação inversa, de colocar todas as linhas de um arquivo numa linha só, já é mais trabalhosa e utiliza o conceito de _laço_:
 
-```
+```shell
 prompt$ sed ':a;$!N;s/\n/ /g;ta'
 ```
 
@@ -33,7 +33,7 @@ O único detalhe nesta tarefa é especificar **quais** linhas você vai querer a
 
 O jeito padrão do _Sed_ ser "ignore-case", é dizendo literalmente todas as possibilidades, como em:
 
-```
+```shell
 prompt$ sed '/[Rr][Oo][Oo][Tt]/d' texto.txt
 ```
 
@@ -41,13 +41,13 @@ Para apagar todas as linhas que contêm a palavra **`root, ROOT, RooT`** etc.
 
 No _Sed_ da GNU, a partir da versão **3.01-beta1**(*), foi adicionado o modificador **`I`** no endereço e no comando **`s///`**, fazendo com que o comando acima fique mais simples:
 
-```
+```shell
 prompt$ sed '/root/Id' texto.txt
 ```
 
 Ou ainda:
 
-```
+```shell
 prompt$ sed 's/root/administrador/Ig' texto.txt
 ```
 
@@ -59,7 +59,7 @@ prompt$ sed 's/root/administrador/Ig' texto.txt
 
 Uma tarefa comum é incluir cabeçalho e rodapé num arquivo qualquer. O _Sed_ possui um comando específico para ler arquivos, o **`r`**, então basta(*):
 
-```
+```shell
 prompt$ sed -e '1r cabecalho.txt' -e '$r rodape.txt' texto.txt
 ```
 
@@ -67,17 +67,17 @@ Para incluir o cabeçalho após a linha **1** e incluir o rodapé após a **últ
 
 (*) a explicação do porquê das opções **`-e`** está no tópico [Aplicando vários comandos de uma vez](https://aurelio.net/sed/sed-howto/#aplicar-varios-comandos).
 
-7.4.2. Gravando arquivos
+### 7.4.2. Gravando arquivos
 
 O comando **`w`** grava num arquivo a linha atual, ou melhor, o conteúdo do _espaço padrão_. Por exemplo, você quer gravar num arquivo o resultado de uma busca por linhas que contêm a palavra `estorvo`. A solução não-_Sed_ seria:
 
-```
+```shell
 prompt$ grep 'estorvo' texto.txt > estorvos.txt
 ```
 
 Nosso similar em _Sed_ seria:
 
-```
+```shell
 prompt$ sed '/estorvo/w estorvos.txt' texto.txt
 ```
 
@@ -91,7 +91,7 @@ Uma tarefa que parece simples mas confunde, é trocar um trecho de texto, como u
 
 Essa é simples, basta usar o comando **`c`**, que "Coloca" um texto no lugar da linha atual. A única complicação é definir o _endereço_, para aplicar o comando apenas nas linhas desejadas. Por exemplo, vamos colocar uma frase no lugar de uma área de texto pré-formatado num documento HTML. Esta área é delimitada pelos identificadores **`<pre>`** e **`</pre>`**:
 
-```
+```shell
 prompt$ sed '/<pre>/,/<\/pre>/c \
 prompt$ aqui tinha texto pré-formatado' texto.html
 ```
@@ -100,7 +100,7 @@ Note que o comando **`c`** (assim como o **`a`** e o **`i`**) **exige** que o te
 
 No _Sed_ da GNU, a partir da versão **3.02a**(*), é permitido que se coloque o texto na mesma linha:
 
-```
+```shell
 prompt$ sed '/<pre>/,/<\/pre>/c aqui tinha texto pré-formatado' texto.html
 ```
 
@@ -110,7 +110,7 @@ prompt$ sed '/<pre>/,/<\/pre>/c aqui tinha texto pré-formatado' texto.html
 
 Similarmente a trocar por apenas uma linha, pode-se usar o comando **`c`** e passar várias linhas para ele. O único detalhe é que todas as linhas devem ser **escapadas** no final, menos a última:
 
-```
+```shell
 prompt$ sed '/<pre>/,/<\/pre>/c \
 prompt$ aqui tinha texto pré-formatado,\
 prompt$ mas eu resolvi tirar.\
@@ -124,7 +124,7 @@ Mas melhor ainda é separar o comando _Sed_ do texto, colocando-o num arquivo se
 
 Supondo que nosso texto explicativo do porquê da retirada do texto pré-formatado foi gravado no arquivo _desculpa.txt_, utilizaremos o comando **`r`** para lê-lo e o comando **`d`** para apagar o texto antigo:
 
-```
+```shell
 prompt$ sed -e '/<\/pre>/r desculpa.txt' -e '/<pre>/,/<\/pre>/d' texto.html
 ```
 

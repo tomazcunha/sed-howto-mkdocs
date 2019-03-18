@@ -34,7 +34,7 @@ Sendo que `regras` tem a forma genérica de:
 
 Como notação tradicional, o que está `[entre colchetes]` é opcional, então a sintaxe _Sed_ mais simples que existe é `sed regra` como em:
 
-```
+```shell
 prompt$ cat texto.txt | sed p
 ```
 
@@ -45,13 +45,13 @@ Ou seja, o _Sed_ lendo da entrada padrão o conteúdo do arquivo _texto.txt_ via
 
 Um outro exemplo do _Sed_ com `opções` e recebendo um arquivo como parâmetro seria:
 
-```
+```shell
 prompt$ sed -n p texto.txt
 ```
 
 E ainda, agora especificando um **endereço** para o comando **`p`**:
 
-```
+```shell
 prompt$ sed -n 5p texto.txt
 ```
 
@@ -64,7 +64,7 @@ A execução do _Sed_ é igual a de outro aplicativo qualquer de manipulação d
 
 E como dica geral **SEMPRE** coloque os comandos do _Sed_ entre aspas simples **`''`**, para evitar que o _shell_ os interprete erroneamente. Veja mais detalhes no tópico [Sed e shell](https://aurelio.net/sed/sed-howto/#sed-e-shell).
 
-```
+```shell
 prompt$ sed 'p' texto.txt
 prompt$ cat texto.txt | sed 'p'
 prompt$ sed 'p' < texto.txt

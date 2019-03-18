@@ -13,10 +13,11 @@ nav:
     - 11. Onde obter mais informações: 'Cap11-Onde-obter-mais-informações.md'
 theme:
     name: readthedocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - rust
+    # highlightjs: true
+    # hljs_languages:
+    #     - shell
+    #     - bash
+        # - Shell Session
 
     # name: readthedocs
     # name: windmill
@@ -78,11 +79,13 @@ theme:
 #         - type: 'linkedin'
 #           link: 'https://linkedin.com/in/squidfunk'
 
+extra_javascript:
+    - assets/javascript/highlight.pack.js
+
 extra_css:
     - assets/stylesheets/extra.css
+    - assets/stylesheets/atelier-dune-dark.css
 
-# extra_javascript:
-#   - 'javascripts/extra.js'
 
 # google_analytics:
 #   - 'UA-XXXXXXXX-X'
