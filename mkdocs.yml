@@ -84,7 +84,16 @@ extra_javascript:
 
 extra_css:
     - assets/stylesheets/extra.css
-    - assets/stylesheets/atelier-dune-dark.css
+    # - assets/stylesheets/atelier-dune-dark.css
+    - assets/stylesheets/a11y-dark.css
+    # - assets/stylesheets/an-old-hope.css
+    # - assets/stylesheets/agate.css
+
+    # - assets/stylesheets/atom-one-dark.css
+    # - assets/stylesheets/darkula.css
+    # - assets/stylesheets/dracula.css
+    # - assets/stylesheets/hopscotch.css
+    # - assets/stylesheets/solarized-dark.css
 
 
 # google_analytics:
