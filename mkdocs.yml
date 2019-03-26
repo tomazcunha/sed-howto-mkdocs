@@ -92,13 +92,16 @@ theme:
 #         - type: 'linkedin'
 #           link: 'https://linkedin.com/in/squidfunk'
 
+extra_css:
+    # - assets/stylesheets/extra-readthedocs.css
+    - assets/stylesheets/extra-material.css
+    - assets/stylesheets/a11y-dark.css
+
 extra_javascript:
     - assets/javascript/highlight.pack.js
     - assets/javascript/hljs.js
 
-extra_css:
-    - assets/stylesheets/extra.css
-    - assets/stylesheets/a11y-dark.css
+
     # - assets/stylesheets/atelier-dune-dark.css
     # - assets/stylesheets/an-old-hope.css
     # - assets/stylesheets/agate.css
@@ -125,7 +128,7 @@ extra_css:
 
 
 
-markdown_extensions:
+# markdown_extensions:
 #     - pymdownx.arithmatex
 #     - pymdownx.betterem:
 #         smart_enable: all
@@ -147,5 +150,5 @@ markdown_extensions:
     #     linenums: true
 
     # - fenced_code
-    - toc:
-        permalink: True
+    # - toc:
+    #     permalink: True

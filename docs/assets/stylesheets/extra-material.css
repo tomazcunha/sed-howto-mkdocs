@@ -1,0 +1,76 @@
+/* https://colorhunt.co/ */
+
+.md-header {
+    /* position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2.4rem;
+    transition: background-color .25s,color .25s;
+    background-color: #3f51b5;
+    color: #fff;
+    box-shadow: none;
+    z-index: 2;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; */
+
+    /* background-color: rgba(0,0,0,.87); */
+    background-color: #4592af;
+
+}
+
+/* ------------------------------ ícones */
+.md-header-nav__button.md-logo * {
+    color: rgba(0,0,0,.87);
+}
+
+.md-source__icon {
+    color: rgba(0,0,0,.87);
+}
+
+
+/* ------------------------------  Links */
+.md-nav__link--active, .md-nav__link:active {
+    /* color: #f67280; */
+    /* color: #a23131; */
+    color: #226089;
+    font-weight: bold;
+}
+
+.md-nav__link--hover, .md-nav__link:hover {
+    color: #4592af;
+}
+
+.md-typeset a {
+    color: #4592af;
+}
+
+.md-typeset a:hover {
+    /* color: #f67280; */
+    /* color: #a23131; */
+    color: #226089;
+}
+
+
+ /* ------------------------------  */
+.headerlink {
+    color: #4592af;
+}
+
+
+ /* ------------------------------ Menu Principal */
+.md-sidebar--primary {
+    /* background-color: #e9e4e6; */
+}
+
+
+
+
+ /* ------------------------------ Code */
+.md-typeset pre > code {
+    display: block;
+    overflow-x: auto;
+    background: #2b2b2b;
+    color: #f8f8f2;
+    padding: 0.5em;
+}
