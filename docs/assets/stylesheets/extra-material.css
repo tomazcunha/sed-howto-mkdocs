@@ -15,7 +15,8 @@
     backface-visibility: hidden; */
 
     /* background-color: rgba(0,0,0,.87); */
-    background-color: #4592af;
+    /* background-color: #4592af; */
+    background-color: #1c819e;
 
 }
 
@@ -38,23 +39,27 @@
 }
 
 .md-nav__link--hover, .md-nav__link:hover {
-    color: #4592af;
+    /* color: #4592af; */
+    color: #1c819e;
 }
 
 .md-typeset a {
-    color: #4592af;
+    /* color: #4592af; */
+    color: #1c819e;
 }
 
 .md-typeset a:hover {
     /* color: #f67280; */
     /* color: #a23131; */
-    color: #226089;
+    /* color: #226089; */
+    color: #1c819e;
 }
 
 
  /* ------------------------------  */
 .headerlink {
-    color: #4592af;
+    /* color: #4592af; */
+    color: #1c819e;
 }
 
 
