@@ -1,4 +1,14 @@
 site_name: Sed HOWTO
+site_author: 'tomazmcn@gmail.com'
+site_description: 'Versão em Markdown e HTML do documento Sed HOWTO.'
+repo_url: https://github.com/tomazcunha/sed-howto-mkdocs
+# copyright: ''
+# repo_name: 'GitHub'
+# edit_uri: tree/master/docs
+
+# cria links que apontam diretamente para o arquivo de destino em vez do diretório de destino.
+use_directory_urls: false
+
 nav:
     - 1. Sobre este documento: 'index.md'
     - 2. Conhecendo o sed: 'Cap02-Conhecendo-o-sed.md'
@@ -11,6 +21,7 @@ nav:
     - 9. Fluxogramas: 'Cap09-Fluxogramas.md'
     - 10. Nota sobre os adicionais GNU: 'Cap10-Nota-sobre-os-adicionais-GNU.md'
     - 11. Onde obter mais informações: 'Cap11-Onde-obter-mais-informações.md'
+
 theme:
     name: readthedocs
     # highlightjs: true
@@ -112,7 +123,7 @@ extra_css:
 
 
 
-# markdown_extensions:
+markdown_extensions:
 #     - pymdownx.arithmatex
 #     - pymdownx.betterem:
 #         smart_enable: all
@@ -134,5 +145,5 @@ extra_css:
     #     linenums: true
 
     # - fenced_code
-    # - toc:
-    #     permalink: True
+    - toc:
+        permalink: True
