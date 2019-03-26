@@ -23,21 +23,23 @@ nav:
     - 11. Onde obter mais informações: 'Cap11-Onde-obter-mais-informações.md'
 
 theme:
-    name: readthedocs
+    # name: readthedocs
     # highlightjs: true
     # hljs_languages:
     #     - shell
     #     - bash
         # - Shell Session
 
-    # name: readthedocs
+    name: material
+
     # name: windmill
-    # name: cinder
-    # name: alabaster
-    # name: bootstrap
+    # name: readthedocs
+
+    # name: cinder      # problema com menu
+    # name: bootstrap   # problema com menu
     # name: bootstrap4
-    # name: gitbook
-    # name: material
+    # name: gitbook       # não fuinciona
+    # name: alabaster   # não fuinciona
 
     # name: mkdocs
     # highlightjs: true
@@ -92,14 +94,14 @@ theme:
 
 extra_javascript:
     - assets/javascript/highlight.pack.js
+    - assets/javascript/hljs.js
 
 extra_css:
     - assets/stylesheets/extra.css
-    # - assets/stylesheets/atelier-dune-dark.css
     - assets/stylesheets/a11y-dark.css
+    # - assets/stylesheets/atelier-dune-dark.css
     # - assets/stylesheets/an-old-hope.css
     # - assets/stylesheets/agate.css
-
     # - assets/stylesheets/atom-one-dark.css
     # - assets/stylesheets/darkula.css
     # - assets/stylesheets/dracula.css
