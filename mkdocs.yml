@@ -10,7 +10,8 @@ repo_url: https://github.com/tomazcunha/sed-howto-mkdocs
 use_directory_urls: false
 
 nav:
-    - 1. Sobre este documento: 'index.md'
+    - 0. Versão Markdown com MkDocs: 'index.md'
+    - 1. Sobre este documento: 'Cap01-Sobre.md'
     - 2. Conhecendo o sed: 'Cap02-Conhecendo-o-sed.md'
     - 3. Perdendo o medo do sed: 'Cap03-Perdendo-o-medo-do-sed.md'
     - 4. Os comandos do sed: 'Cap04-Os-comandos-do-sed.md'
@@ -38,8 +39,8 @@ theme:
     # name: cinder      # problema com menu
     # name: bootstrap   # problema com menu
     # name: bootstrap4
-    # name: gitbook       # não fuinciona
-    # name: alabaster   # não fuinciona
+    # name: gitbook       # não funciona
+    # name: alabaster   # não funciona
 
     # name: mkdocs
     # highlightjs: true
